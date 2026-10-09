@@ -164,4 +164,6 @@ footer.site-footer .mono { color: var(--accent); }
 
 @media (max-width: 600px) {
   .card-grid { grid-template-columns: 1fr; }
+  .logo { font-size: 15px; }
+  .nav-link { padding: 6px 8px; font-size: 14px; }
 }

@@ -44,6 +44,33 @@ status: "进行中"
 项目详情。
 ```
 
+## 怎么加图片 / 文件
+
+把图片或文件丢进 `public/` 文件夹，它们会被**原样发布**到网站上：
+
+```
+public/
+  images/    ← 放图片（jpg / png / webp / gif / svg）
+  files/     ← 放 PDF、压缩包、报告等任意文件
+```
+
+**在文章里显示图片**（路径以 `/` 开头，对应 `public/` 根目录）：
+
+```md
+![图片描述](/images/你的图片.jpg)
+```
+
+**生成一个可下载的文件链接**：
+
+```md
+[下载原理图 PDF](/files/原理图.pdf)
+```
+
+> 提示：
+> - `public/images/a.jpg` → 网址路径是 `/images/a.jpg`；
+> - 图片建议先压缩（可用 tinypng 等），GitHub 单文件上限 100MB，图片太大会让网页变慢；
+> - 图片引用的是网址路径，所以放在文章任意位置都能显示。
+
 ## 部署到 GitHub Pages（免费）
 
 1. 把整个 `website` 目录推到 GitHub 仓库（例如 `my-site`）；

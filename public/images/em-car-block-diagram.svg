@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 240" width="940" height="240">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="940" height="240" rx="12" fill="#f8fafc"/>
+  <text x="30" y="46" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="17" font-weight="700" fill="#0f172a">电磁循迹小车 · 信号流与数据流</text>
+
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif">
+    <g>
+      <rect x="25" y="100" width="150" height="64" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="100" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0f172a">电感检测</text>
+      <text x="100" y="149" text-anchor="middle" font-size="12" fill="#64748b">交变磁场</text>
+    </g>
+    <g>
+      <rect x="210" y="100" width="150" height="64" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="285" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0f172a">ADC 采样</text>
+      <text x="285" y="149" text-anchor="middle" font-size="12" fill="#64748b">中线偏差</text>
+    </g>
+    <g>
+      <rect x="395" y="100" width="150" height="64" rx="10" fill="#e0f2fe" stroke="#0ea5e9"/>
+      <text x="470" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#075985">STC32 主控</text>
+      <text x="470" y="149" text-anchor="middle" font-size="12" fill="#0369a1">滤波 + 解算</text>
+    </g>
+    <g>
+      <rect x="580" y="100" width="150" height="64" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="655" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0f172a">PID 转向</text>
+      <text x="655" y="149" text-anchor="middle" font-size="12" fill="#64748b">闭环调节</text>
+    </g>
+    <g>
+      <rect x="765" y="100" width="150" height="64" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="840" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0f172a">PWM 差速</text>
+      <text x="840" y="149" text-anchor="middle" font-size="12" fill="#64748b">电机驱动</text>
+    </g>
+
+    <line x1="177" y1="132" x2="204" y2="132" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="362" y1="132" x2="389" y2="132" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="547" y1="132" x2="574" y2="132" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="732" y1="132" x2="759" y2="132" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <path d="M840,170 L840,200 L100,200 L100,168" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+    <text x="470" y="222" text-anchor="middle" font-size="12" fill="#94a3b8">偏差反馈</text>
+  </g>
+</svg>

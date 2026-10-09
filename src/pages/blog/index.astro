@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="博客 · LynCiel">
+  <section class="page-head">
+    <h1>博客</h1>
+    <p>学习笔记、踩坑记录与复盘。</p>
+  </section>
+
+  {
+    posts.length > 0 ? (
+      <div class="card-grid">
+        {posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            href={`/blog/${post.slug}/`}
+            date={post.data.pubDate.toISOString().slice(0, 10)}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    ) : (
+      <p>还没有文章。在 src/content/blog/ 下新建一个 .md 文件就能发一篇。</p>
+    )
+  }
+</BaseLayout>

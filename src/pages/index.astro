@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const projects = await getCollection('projects');
+const recentPosts = posts.slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="hero-kicker">~/lynciel &gt; whoami</p>
+    <h1>LynCiel</h1>
+    <p class="hero-sub">测控技术与仪器 · 嵌入式 / 硬件 · 记录学习与踩坑</p>
+    <p class="hero-desc">
+      一名大二学生，在智能车队里做硬件与下位机。正在从 STC 迁移到 STM32、
+      学着自己画板子。这里记录我的学习笔记、项目复盘和思考。
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="/blog/">看博客</a>
+      <a class="btn btn-ghost" href="/projects/">看项目</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>最近文章</h2>
+    {
+      recentPosts.length > 0 ? (
+        <div class="card-grid">
+          {recentPosts.map((post) => (
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              href={`/blog/${post.slug}/`}
+              date={post.data.pubDate.toISOString().slice(0, 10)}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>还没有文章，去写第一篇吧。</p>
+      )
+    }
+    <a class="more-link" href="/blog/">全部文章 →</a>
+  </section>
+
+  <section>
+    <h2>项目</h2>
+    <div class="card-grid">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tech={project.data.tech}
+          status={project.data.status}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

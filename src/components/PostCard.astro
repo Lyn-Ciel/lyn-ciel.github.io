@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date?: string;
+  tags?: string[];
+}
+
+const { title, description, href, date, tags = [] } = Astro.props;
+---
+
+<article class="card">
+  <a href={href}>
+    <div class="card-meta">{date}{tags.length > 0 ? ` · ${tags.join(' / ')}` : ''}</div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </a>
+</article>

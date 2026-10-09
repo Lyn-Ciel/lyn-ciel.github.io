@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tech?: string[];
+  status?: string;
+}
+
+const { title, description, tech = [], status = '进行中' } = Astro.props;
+---
+
+<article class="card">
+  <div class="card-meta">{status}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {tech.length > 0 && (
+    <p style="margin-top: 12px;">
+      {tech.map((t) => (<span class="tag">{t}</span>))}
+    </p>
+  )}
+</article>

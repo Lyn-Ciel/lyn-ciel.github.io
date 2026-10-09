@@ -1,0 +1,30 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const nav = [
+  { href: '/', label: '首页' },
+  { href: '/blog/', label: '博客' },
+  { href: '/projects/', label: '项目' },
+  { href: '/about/', label: '关于' },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/"><span class="logo-prompt">&gt;_</span> LynCiel</a>
+    <nav>
+      {
+        nav.map((item) => {
+          const active = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+          return (
+            <a href={item.href} class:list={['nav-link', { active }]}>{item.label}</a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>

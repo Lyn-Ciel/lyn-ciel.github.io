@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: Lyn-Ciel/lyn-ciel.github.io
+  branch: main
+  # ⚠️ 等 OAuth 登录中转部署好后，把下面这行换成你的 Worker 地址
+  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  auth_endpoint: auth
+
+# 上传的图片存到哪里 / 网页里的路径
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# 站点地址
+site_url: https://lyn-ciel.github.io
+
+# 后台界面语言
+locale: zh_Hans
+
+collections:
+  # ── 博客文章 ──
+  - name: blog
+    label: 博客
+    label_singular: 文章
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "摘要", name: "description", widget: "text" }
+      - {
+          label: "发布日期",
+          name: "pubDate",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+        }
+      - { label: "标签", name: "tags", widget: "list", required: false, default: [] }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  # ── 项目 ──
+  - name: projects
+    label: 项目
+    label_singular: 项目
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "项目名", name: "title", widget: "string" }
+      - { label: "一句话介绍", name: "description", widget: "text" }
+      - { label: "技术栈", name: "tech", widget: "list", required: false, default: [] }
+      - { label: "状态", name: "status", widget: "string", required: false, default: "进行中" }
+      - { label: "详情", name: "body", widget: "markdown" }
+
+  # ── 单页（关于我）──
+  - name: pages
+    label: 页面
+    files:
+      - name: about
+        label: 关于我
+        file: "src/content/pages/about.md"
+        fields:
+          - { label: "标题", name: "title", widget: "string" }
+          - { label: "副标题", name: "description", widget: "string", required: false }
+          - { label: "内容", name: "body", widget: "markdown" }

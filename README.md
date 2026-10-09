@@ -71,6 +71,21 @@ public/
 > - 图片建议先压缩（可用 tinypng 等），GitHub 单文件上限 100MB，图片太大会让网页变慢；
 > - 图片引用的是网址路径，所以放在文章任意位置都能显示。
 
+## 用后台写文章（CMS）
+
+网站自带一个网页后台：**https://lyn-ciel.github.io/admin/**
+
+登录后可以：
+
+- 点「博客 → 新建文章」写文章，编辑器支持**拖拽上传图片**；
+- 管理「项目」；
+- 编辑「关于我」（对应 `src/content/pages/about.md`）。
+
+后台用 GitHub 登录，**保存时会自动提交到仓库**，并触发自动部署，1~2 分钟后上线。
+
+> 首次配置（一次性）：需要一个 GitHub OAuth 应用 + 一个免费的 Cloudflare Worker 当登录中转，
+> 把 Worker 地址填到 `public/admin/config.yml` 的 `base_url` 即可。
+
 ## 部署到 GitHub Pages（免费）
 
 1. 把整个 `website` 目录推到 GitHub 仓库（例如 `my-site`）；

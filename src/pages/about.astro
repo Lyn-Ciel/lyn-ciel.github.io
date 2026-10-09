@@ -1,30 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages', 'about');
+if (!entry) {
+  throw new Error('缺少 src/content/pages/about.md');
+}
+const { Content } = await render(entry);
 ---
 
-<BaseLayout title="关于 · LynCiel">
+<BaseLayout title={`${entry.data.title} · LynCiel`} description={entry.data.description}>
   <section class="page-head">
-    <h1>关于我</h1>
-    <p>一句话介绍自己。</p>
+    <h1>{entry.data.title}</h1>
+    {entry.data.description && <p>{entry.data.description}</p>}
   </section>
 
   <div class="post-body">
-    <p>
-      我是 LynCiel，中国计量大学测控技术与仪器专业大二学生。
-      目前的方向是嵌入式与硬件，做过 51/STC 的小车，正在系统学习 STM32 和 PCB 设计。
-    </p>
-
-    <h2>我在做什么</h2>
-    <ul>
-      <li>从 STC 迁移到 STM32，补全下位机能力；</li>
-      <li>学习独立设计电路板（立创EDA / PCB）；</li>
-      <li>把做过的项目整理、复盘、写成笔记。</li>
-    </ul>
-
-    <h2>联系我</h2>
-    <p>
-      邮箱：<a href="mailto:3341975892@qq.com">3341975892@qq.com</a>
-      · GitHub：<a href="https://github.com/" target="_blank" rel="noopener">待补</a>
-    </p>
+    <Content />
   </div>
 </BaseLayout>

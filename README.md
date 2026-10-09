@@ -81,10 +81,13 @@ public/
 - 管理「项目」；
 - 编辑「关于我」（对应 `src/content/pages/about.md`）。
 
-后台用 GitHub 登录，**保存时会自动提交到仓库**，并触发自动部署，1~2 分钟后上线。
+后台基于 **Sveltia CMS**（脚本已下载到 `public/admin/sveltia-cms.js`，不依赖国外 CDN），
+使用 **GitHub 令牌（Token）登录**，不需要 OAuth 应用，也不需要任何中转服务。
 
-> 首次配置（一次性）：需要一个 GitHub OAuth 应用 + 一个免费的 Cloudflare Worker 当登录中转，
-> 把 Worker 地址填到 `public/admin/config.yml` 的 `base_url` 即可。
+**登录方法**：打开 `/admin/` → 点「Sign In with Token」→ 按提示在 GitHub 生成一个
+细粒度令牌（权限：**Contents 读写**）→ 粘贴回后台即可。令牌保存在浏览器本地。
+
+**保存时会自动提交到仓库**，并触发自动部署，1~2 分钟后上线。
 
 ## 部署到 GitHub Pages（免费）
 

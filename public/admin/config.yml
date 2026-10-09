@@ -1,20 +1,22 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
 backend:
   name: github
   repo: Lyn-Ciel/lyn-ciel.github.io
   branch: main
-  # ⚠️ 等 OAuth 登录中转部署好后，把下面这行换成你的 Worker 地址
-  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
-  auth_endpoint: auth
 
-# 上传的图片存到哪里 / 网页里的路径
+# 上传的图片存到哪里 / 网页里的访问路径
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-# 站点地址
 site_url: https://lyn-ciel.github.io
 
-# 后台界面语言
+# 界面语言
 locale: zh_Hans
+
+# 空的选填字段不写进 front matter（避免 Astro 内容校验报错）
+output:
+  omit_empty_optional_fields: true
 
 collections:
   # ── 博客文章 ──
